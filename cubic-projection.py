@@ -97,50 +97,73 @@ def parseEquation(equation):
     coeffs = re.search(r'(?:(-?\d*\.*\d+)x\^3)?(?: \+ )?(?:(-?\d*\.*\d+)x\^2y)?(?: \+ )?(?:(-?\d*\.*\d+)xy\^2)?(?: \+ )?(?:(-?\d*\.*\d+)y\^3)?(?: \+ )?(?:(-?\d*\.*\d+)x\^2)?(?: \+ )?(?:(-?\d*\.*\d+)xy)?(?: \+ )?(?:(-?\d*\.*\d+)y\^2)?(?: \+ )?(?:(-?\d*\.*\d+)x)?(?: \+ )?(?:(-?\d*\.*\d+)y)?(?: \+ )?(?:(-?\d*\.*\d+))?', equation)
     return [0 if c is None else float(c) for c in coeffs.groups()]
 
-def drawAffineAndProjected(equation, lineResolution = 0.0025, lineSize = 1.5, affineLim=5, showTdqm = False):
-    coefficents = parseEquation(equation)
-
-    fig, ax = plt.subplots(1,2)
-    #Affine
-    plotCurve(generateFunctionPoints(coefficents, step=lineResolution, showTqdm=showTdqm), size = lineSize, col = 'crimson', ax=ax[0])
-
-    ax[0].set_aspect('equal')
-    ax[0].set_xlim(-affineLim, affineLim)
-    ax[0].set_ylim(-affineLim, affineLim)
-
-    #Projected
-    plotCurve(projectPoints(generateFunctionOnDeprojectedPoints(coefficents, step=lineResolution, showTqdm=showTdqm)), size = lineSize, col = 'crimson', ax=ax[1])
-    circle = plt.Circle(xy=(0, 0), radius=1, color='gold', fill=False)
-    ax[1].add_patch(circle)
-
-    ax[1].set_aspect('equal')
-    ax[1].set_xlim(-1.1, 1.1)
-    ax[1].set_ylim(-1.1, 1.1)
-
-    return plt
-
-
 option = st.selectbox(
-    'Che curva vuoi proiettare?',
-    ('Curva Pene', 'Curva Culo', 'Curva Baseball'))
+    'Curva rappresentata (classi topologiche)',
+    (
+        'y = x^3',
+        'x^2y = 1',
+        'y^2 = [(x-1)^2 (x-2)] / -x',
+        'y^2 = x^2 (x-1)',
+        'y^2 = x(x+1)(x-1)',
+        'y = 1 / (x^2-1)',
+        'y^2 = [(x+1)^2 (x-2)] / x',
+        'y^2 = [(x-1)^2 (x-2)] / x',
+        'y^2 = [(x-2)^2 (x-1)] / x',
+        'y^2 = [(x-1)(x-2)(x-4)] / x',
+        'x^2y - 1/4 x^2 + y^2 = 0',
+        'x^2y + 1/4 x^2 + y^2  = 0',
+        'x^2y + 1/2 x^2 + 1/2 y^2 -2y = 0',
+        '4x^2y + 4y^2 + 3x^2 - 2x = 0',
+        'y^2 = [(x+1)(x-1)(x-2)] / x',
+        'x(x^2 + y^2 - 1) = 0',
+        '(y-1)(x^2 - y) = 0',
+        '(y-2)(x^2 - y^2 - 1) = 0',
+        'xy(y-1) = 0',
+        '(x-y)(x+y)x = 0',
+        '(x-y)(x+y)(x-1) = 0'
+    )
+)
 
-curves_dic = {'Curva Pene':'1x^2y + 1y^2 + -1', 'Curva Culo':'1x^3 + -1y^2', 'Curva Baseball':'1xy^2 + 1y^2 + -1x + 1y + 0'}
+curves_dic = {
+    'y = x^3':                          '1x^3 + -1y',
+    'x^2y = 1':                         '1x^2y + -1',
+    'y^2 = [(x-1)^2 (x-2)] / -x':       '1x^3 + 1xy^2 + -4x^2 + 5x + -2',
+    'y^2 = x^2 (x-1)':                  '1x^3 + -1x^2 + -1y^2',
+    'y^2 = x(x+1)(x-1)':                '1x^3 + -1y^2 + -1x',
+    'y = 1 / (x^2-1)':                  '1x^2y + -1y + -1',
+    'y^2 = [(x+1)^2 (x-2)] / x':        '1x^3 + -1xy^2 + -3x + -2',
+    'y^2 = [(x-1)^2 (x-2)] / x':        '1x^3 + -1xy^2 + -4x^2 + 5x + -2',
+    'y^2 = [(x-2)^2 (x-1)] / x':        '1x^3 + -1xy^2 + -5x^2 + 8x + -4',
+    'y^2 = [(x-1)(x-2)(x-4)] / x':       '1x^3 + -1xy^2 + -7x^2 + 14x + -8',
+    'x^2y - 1/4 x^2 + y^2 = 0':         '1x^2y + -.25x^2 + 1y^2',
+    'x^2y + 1/4 x^2 + y^2  = 0':        '1x^2y + .25x^2 + 1y^2',
+    'x^2y + 1/2 x^2 + 1/2 y^2 -2y = 0': '1x^2y + .5x^2 + .5y^2 + -2y',
+    '4x^2y + 4y^2 + 3x^2 - 2x = 0':     '4x^2y + 3x^2 + 4y^2 + -2x',
+    'y^2 = [(x+1)(x-1)(x-2)] / x':      '1x^3 + -1xy^2 + -2x^2 + -1x + 2',
+    'x(x^2 + y^2 - 1) = 0':             '1x^3 + 1xy^2 + -1x',
+    '(y-1)(x^2 - y) = 0':               '1x^2y + -1x^2 + -1y^2 + 1y',
+    '(y-2)(x^2 - y^2 - 1) = 0':         '1x^2y + -1y^3 + -2x^2 + 2y^2 + -1y + 2',
+    'xy(y-1) = 0':                      '1xy^2 + -1xy',
+    '(x-y)(x+y)x = 0':                  '1x^3 + -1xy^2',
+    '(x-y)(x+y)(x-1) = 0':              '1x^3 + -1xy^2 + -1x^2 + 1y^2'
+}
 
 #st.write('You selected:', option)
 
 with st.empty():
     lineSize = 0.25
     step = 200
+    affineLim = 6
 
     coefficents = parseEquation(curves_dic[option])
 
-    source = generateFunctionPoints(coefficents, start=-5, stop=5, step = 0.05)
+    source = generateFunctionPoints(coefficents, start=-affineLim, stop=affineLim, step = 0.05)
     source2 = projectPoints(generateFunctionOnDeprojectedPoints(coefficents, step = 0.0035))
 
     fig, ax = plt.subplots(1,2)
     ax[0].set_aspect('equal')
-    ax[0].set_xlim(-5, 5)
-    ax[0].set_ylim(-5, 5)
+    ax[0].set_xlim(-affineLim, affineLim)
+    ax[0].set_ylim(-affineLim, affineLim)
     circle = plt.Circle(xy=(0, 0), radius=1, color='gold', fill=False, zorder=2.0, linewidth=2)
     ax[1].add_patch(circle)
 
