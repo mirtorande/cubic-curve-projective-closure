@@ -56,16 +56,16 @@
                         <div class="flex-grow-1">
                             <h3>Geometria proiettiva</h3>
                             <p>La geometria proiettiva è un'estensione della geometria euclidea.
-                                Mentre la geometria euclidea studia la forma degli oggetti planari e solidi che rimangono immutate da traslazioni, rotazioni e riflessioni (omotetie), la geometria proiettiva studia il modo in cui gli oggetti sono visti.
+                                Mentre la geometria euclidea studia le proprietà degli oggetti planari e solidi che rimangono immutate da traslazioni, rotazioni e riflessioni (omotetie), la geometria proiettiva studia il modo in cui gli oggetti sono visti.
                                 Un modello fisico per lo studio della prospettiva (lineare) è quello che include l'occhio (o centro di proiezione), il piano immagine e l'oggetto da osservare.
                                 I punti proiettati sul piano vengono trovati tracciando una retta dall'occhio ad un punto sull'oggetto e calcolando l'intersezione con il piano.
-                                Possiamo rappresentare questo modello nello spazio \(\mathbb{E}^{3}\), chiamando gli assi \(X, Y\) e \(U\). Poniamo il centro di proiezione all'origine O, il piano immagine sarà il piano affine di equazione \(U = 1\), prendiamo \(P\) come punto sull'oggetto osservato e chiamiamo \(P'\) il punto proiettato.
+                                Possiamo rappresentare questo modello nello spazio \(\mathbb{E}^{3}\), chiamando gli assi \(X, Y\) e \(U\). Poniamo il centro di proiezione all'origine \(O\). Il piano immagine sarà il piano affine di equazione \(U = 1\). Prendiamo \(P\) come punto sull'oggetto osservato e chiamiamo \(P'\) il punto proiettato.
                                 Se proiettiamo tutti i punti nello spazio, eccetto quelli appartenenti al piano \(U = 0\) otterremo la chiusura proiettiva del piano immagine.</p>
                             <div class="text-center"><img src="assets/chiusura_proiettiva.jpg" class="img-fluid" alt="Chiusura proiettiva di U = 0"></div>
                             <p>I punti appartenenti ad \(U = 0\) sono detti impropri poiché non si intersecano mai con il piano immagine, avendo distanza infinita individuano delle rette \(PO\) parallele al piano immagine e rappresentano una direzione al suo interno.
                                 Queste rette sono a loro volta dette rette improprie.
 
-                            <p>I punti propri, ovvero quelli con coordinata \(U \not = 0\) possono essere specificati con le loro coordinate proiettive, con la seguente notazione \((X:Y:U)\). 
+                            <p>I punti propri, ovvero quelli con coordinata \(U \not = 0\) possono essere specificati con le loro coordinate proiettive, con la seguente notazione: \((X:Y:U)\). 
                                 Le coordinate affini \((x,y)\) di \(P'\) si determinano con le seguenti formule:</p>
                                 
                             <p>
@@ -79,13 +79,13 @@
                                 $$
                             </p>
                                 
-                                Dato che punti sulla stessa retta individuano lo stesso punto proiettato, coordinate proiettive uguali a meno di un fattore di proporzionalità indicano lo stesso punto /(P'/).
+                                Dato che punti sulla stessa retta individuano lo stesso punto proiettato, coordinate proiettive uguali a meno di un fattore di proporzionalità indicano lo stesso punto \(P'\).
                                 
                                 $$
                                   (X:Y:U) \equiv \rho (X:Y:U) \quad con \quad \rho \in \mathbb{R}
                                 $$
                                 
-                                L'estensione che la geometria proiettiva fa alla geometria euclidea sono quindi questi punti impropri, che consentono di rappresentare quei punti dove le rette parallele si incontrano all'orizzonte.</p>
+                                L'estensione che la geometria proiettiva fa alla geometria euclidea consiste quindi nell'aggiunta di questi punti impropri, che consentono di rappresentare quei punti dove le rette parallele si incontrano all'orizzonte.</p>
                         </div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
@@ -154,7 +154,7 @@
                                     \(x^3 + xy^2 + 1 = 0\)
                                 </li>
                                 <li>
-                                    \(x^3 - xy^2 - x^2 + Hx + Iy + J = 0 \)<br>\() -∞ < H < ∞,\qquad -∞ < I \leq 0 ,\qquad -∞ < J < ∞\)
+                                    \(x^3 - xy^2 - x^2 + Hx + Iy + J = 0 \)<br>\( -∞ < H < ∞,\qquad -∞ < I \leq 0 ,\qquad -∞ < J < ∞\)
                                 </li>
                                 <li>
                                     \(x^3 - xy^2 + 1 = 0\)
@@ -209,7 +209,7 @@
                             <p>Un'altra classificazione interessante è quella topologica, ovvero quella che raggruppa le curve che presentano un omeomorfismo nel piano.
                             In matematica, e più precisamente in topologia, un omeomorfismo è una particolare funzione fra spazi topologici che modella l'idea intuitiva di "deformazione senza strappi".
                             Andremo a tracciare la chiusura proiettiva delle curve non riducibili secondo questa classificazione nell'applicativo.
-                            Le curve riducibili corrisponderebbero a combinazioni di curve algebriche piane di primo e secondi grado e pertanto non sono di nostro interesse.</p>
+                            Le curve riducibili corrisponderebbero a combinazioni di curve algebriche piane di primo e secondo grado e pertanto non sono di nostro interesse.</p>
                             <div class="text-center"><img src="assets/curve_riducibili.jpg" class="img-fluid w-75" alt="Le curve riducibili che non vengono considerate nella classificazione topologica"></div>
                             <p><em>Weinberg, David A. "The topological classification of cubic curves." The Rocky Mountain Journal of Mathematics (1988): 665-679.</em></p>
                         </div>
