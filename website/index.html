@@ -14,191 +14,252 @@
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <!-- MathJax -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span class="d-block d-lg-none">Clarence Taylor</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="..." /></span>
-            </a>
+            <a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Home</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Teoria</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Manuale</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#applet">Applet</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#teoria">Teoria</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#manuale">Manuale</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#applicazione">Applicazione</a></li>
                 </ul>
             </div>
         </nav>
         <!-- Page Content-->
         <div class="container-fluid p-0">
-            <!-- About-->
+            <!-- Home-->
             <section class="resume-section" id="about">
                 <div class="resume-section-content">
                     <h1 class="mb-0">
-                        Clarence
-                        <span class="text-primary">Taylor</span>
+                        <span class="text-primary">Proiezione</span>
+                        di Curve cubiche piane
                     </h1>
                     <div class="subheading mb-5">
-                        3542 Berry Street · Cheyenne Wells, CO 80810 · (317) 585-8468 ·
-                        <a href="mailto:name@email.com">name@email.com</a>
+                        Progetto di Geometria Computazionale AA 2022-2023
                     </div>
-                    <p class="lead mb-5">I am experienced in leveraging agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</p>
-                    <div class="social-icons">
-                        <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
-                        <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
-                        <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
+                    <p class="lead mb-5">Realizzato da Mirto Randellini</p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Teoria-->
+            <section class="resume-section" id="teoria">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Teoria</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3>Geometria proiettiva</h3>
+                            <p>La geometria proiettiva è un'estensione della geometria euclidea.
+                                Mentre la geometria euclidea studia la forma degli oggetti planari e solidi che rimangono immutate da traslazioni, rotazioni e riflessioni (omotetie), la geometria proiettiva studia il modo in cui gli oggetti sono visti.
+                                Un modello fisico per lo studio della prospettiva (lineare) è quello che include l'occhio (o centro di proiezione), il piano immagine e l'oggetto da osservare.
+                                I punti proiettati sul piano vengono trovati tracciando una retta dall'occhio ad un punto sull'oggetto e calcolando l'intersezione con il piano.
+                                Possiamo rappresentare questo modello nello spazio \(\mathbb{E}^{3}\), chiamando gli assi \(X, Y\) e \(U\). Poniamo il centro di proiezione all'origine O, il piano immagine sarà il piano affine di equazione \(U = 1\), prendiamo \(P\) come punto sull'oggetto osservato e chiamiamo \(P'\) il punto proiettato.
+                                Se proiettiamo tutti i punti nello spazio, eccetto quelli appartenenti al piano \(U = 0\) otterremo la chiusura proiettiva del piano immagine.</p>
+                            <div class="text-center"><img src="assets/chiusura_proiettiva.jpg" class="img-fluid" alt="Chiusura proiettiva di U = 0"></div>
+                            <p>I punti appartenenti ad \(U = 0\) sono detti impropri poichè non si intersecano mai con il piano immagine, avendo distanza infinita individuano delle rette \(PO\) parallele al piano immagine e rappresentano una direzione al suo interno.
+                                Queste rette sono a loro volta dette rette improprie.
+
+                            <p>I punti propri, ovvero quelli con coordinata \(U \not = 0\) possono essere specificati con le loro coordinate proiettive, con la seguente notazione \((X:Y:U)\). 
+                                Le coordinate affini \((x,y)\) di \(P'\) si determinano con le seguenti formule:</p>
+                                
+                            <p>
+                                $$
+                                  \begin{cases}
+                                    \begin{aligned}
+                                      x &= \frac{X}{U} \\
+                                      y &= \frac{Y}{U}
+                                    \end{aligned},\quad U\neq 0
+                                  \end{cases}
+                                $$
+                            </p>
+                                
+                                Dato che punti sulla stessa retta individuano lo stesso punto proiettato, coordinate proiettive uguali a meno di un fattore di proporzionalità indicano lo stesso punto /(P'/).
+                                
+                                $$
+                                  (X:Y:U) \equiv \rho (X:Y:U) \quad con \quad \rho \in \mathbb{R}
+                                $$
+                                
+                                L'estensione che la geometria proiettiva fa alla geometria euclidea sono quindi questi punti impropri, che consentono di rappresentare quei punti dove le rette parallele si incontrano all'orizzonte.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3>Chiusura proiettiva su disco</h3>
+                            <p>Per visualizzare questi punti impropri (o punti ideali) possiamo immaginare una corrispondenza tra il piano euclideo e l'interno di un disco circolare.
+                                In questo modo i punti ideali si troveranno sul bordo del disco, disposti in modo tale che punti agli antipodi individueranno lo stesso punto ideale.</p>
+                            <div class="text-center"><img src="assets/antipodi.jpg" class="img-fluid" alt="Punti impropri sul modello a disco"></div>
+                            <p>Per mappare un qualsiasi piano affine \(\pi\) (eccetto \(U = 0\)), nello spazio interno al disco, faremo le seguenti operazioni per ciascun punto \(P \in \mathbb{E}^{2}\):</p>
+                            <ul class="mb-0">
+                                <li>
+                                    Proiettare \(P\) su una semisfera di raggio unitario, trovando \(P'\)
+                                </li>
+                                <li>
+                                    Proiettare \(P'\) sul piano passante per il centro della semisfera e parallelo a \(\pi\), trovando \(P''\)
+                                </li>
+                            </ul>
+                            <div class="text-center"><img src="assets/proiezione_semisfera.jpg" class="img-fluid" alt="Proiezione dei punti del piano sulla semisfera unitaria"></div>
+                            <p>Usando la trigonometria è possibile ricavare direttamente le coordinate \((x'',y'')\) di \(P''\) a partire dalle coordinate \((x,y)\) di \(P\), nel seguente modo:</p>
+                            <p>
+                                $$
+                                \begin{cases}
+                                    \begin{aligned}
+                                    x'' &= \sin \arctan x \\
+                                    y'' &= \sin \arctan y
+                                    \end{aligned}
+                                \end{cases}
+                                $$
+                            </p>
+                            <p>Dove la formula per \(x\) è stata ricavata dalle seguenti osservazioni:</p>
+                            <div class="text-center"><img src="assets/sezione_proiezione_semisfera.jpg" class="img-fluid" alt="Sezione laterale della proiezione per mostrare i passi trigonometrici"></div>
+                            <p>
+                            $$
+                            \begin{aligned}
+
+                                \theta &= \arctan x \\
+                                x'' &= \sin \theta
+                            \end{aligned}
+                            $$
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3>Curve cubiche</h3>
+                            <p>Le curve cubiche sono curve algebriche piane di grado tre, e hanno la forma:</p>
+                            <p>
+                                $$
+                                Ax^3 + Bx^2y + Cxy^2 + Dy^3 + Ex^2 + Fxy + Gy^2 + Hx + Iy + J = 0
+                                $$
+                            </p>
+                            <h4>Classificazione affine</h4>
+                            <p>Sono presenti diverse possibili classificazioni di queste curve, ciascuna prende in considerazione gli invarianti rispetto a diverse trasformazioni. La classificazione che andremo a considerare è quella affine, ovvero quella che raggruppa le curve uguali a meno di una trasformazione affine nel piano.
+                                Secondo questa classificazione sono presenti le seguenti curve non riducibili:</p>
+                            <ul class="mb-0">
+                                <li>
+                                    \(x^3 + xy^2 + x^2 + Hx + Iy + J = 0\)<br>\(-∞ < H < ∞,\qquad 0 \leq I < ∞,\qquad -∞ < J < ∞\)
+                                </li>
+                                <li>
+                                    \(x^3 + xy^2 + y + Hx + J = 0 \)<br>\( -∞ < H < ∞,\qquad -∞ < J < ∞\)
+                                </li>
+                                <li>
+                                    \(x^3 + xy^2 + x + J = 0 \)<br>\( 0 \leq J < ∞\)
+                                </li>
+                                <li>
+                                    \(x^3 + xy^2 + 1 = 0\)
+                                </li>
+                                <li>
+                                    \(x^3 - xy^2 - x^2 + Hx + Iy + J = 0 \)<br>\() -∞ < H < ∞,\qquad -∞ < I \leq 0 ,\qquad -∞ < J < ∞\)
+                                </li>
+                                <li>
+                                    \(x^3 - xy^2 + 1 = 0\)
+                                </li>
+                                <li>
+                                    \(x^2y + y^2 - x + y + J = 0 \)<br>\( -∞ < J < ∞\)
+                                </li>
+                                <li>
+                                    \(x^2y + y^2 + y + J = 0 \)<br>\( -∞ < J < ∞\)
+                                </li>
+                                <li>
+                                    \(x^2y + y^2 - 1 = 0\)
+                                </li>
+                                <li>
+                                    \(x^2y + y^2= 0\)
+                                </li>
+                                <li>
+                                    \(x^2y - x + y + J = 0 \)<br>\( 0 \leq J < ∞\)
+                                </li>
+                                <li>
+                                    \(x^2y - x = 0\)
+                                </li>
+                                <li>
+                                    \(x^2y - x + 1 = 0\)
+                                </li>
+                                <li>
+                                    \(x^2y + y + 1 = 0\)
+                                </li>
+                                <li>
+                                    \(x^2y + 1= 0\)
+                                </li>
+                                <li>
+                                    \(x^3 - y^2 + x + J = 0 \)<br>\( -∞ \lt J \lt ∞\)
+                                </li>
+                                <li>
+                                    \(x^3 - y^2 - x + J = 0 \)<br>\( -∞ \lt J \lt ∞\)
+                                </li>
+                                <li>
+                                    \(x^3 - y^2 + 1 = 0\)
+                                </li>
+                                <li>
+                                    \(x^3 - y^2 = 0\)
+                                </li>
+                                <li>
+                                    \(x^3 - y = 0\)
+                                </li>
+                                <li>
+                                    \(x^3 - xy + 1 = 0\)
+                                </li>
+                            </ul>
+                            <br>
+                            <p><em>Weinberg, David A. "The topological classification of cubic curves." The Rocky Mountain Journal of Mathematics (1988): 655-664.</em></p>
+                            <br>
+                            <h4>Classificazione topologica</h4>
+                            <p>Un'altra classificazione interessante è quella topologica, ovvero quella che raggruppa le curve che presentano un omeomforismo nel piano.
+                            In matematica, e più precisamente in topologia, un omeomorfismo è una particolare funzione fra spazi topologici che modella l'idea intuitiva di "deformazione senza strappi".
+                            Secondo questa classificazione sono presenti 21 curve non riducibili, di cui andremo a tracciare la chiusura proiettiva nell'applicativo.
+                            Le curve riducibili corrisponderebbero a combinazioni di curve algebriche piane di primo e secondi grado e pertanto non sono di nostro interesse.</p>
+                            <div class="text-center"><img src="assets/curve_riducibili.jpg" class="img-fluid w-75" alt="Le curve riducibili che non vengono considerate nella classificazione topologica"></div>
+                            <p><em>Weinberg, David A. "The topological classification of cubic curves." The Rocky Mountain Journal of Mathematics (1988): 665-679.</em></p>
+                        </div>
                     </div>
                 </div>
             </section>
             <hr class="m-0" />
-            <!-- Experience-->
-            <section class="resume-section" id="experience">
+            <!-- Manuale-->
+            <section class="resume-section" id="manuale">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Experience</h2>
+                    <h2 class="mb-5">Manuale</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Senior Web Developer</h3>
-                            <div class="subheading mb-3">Intelitec Solutions</div>
-                            <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+                            <h4>Maschera di selezione classificazione</h4>
+                            <div class="text-center"><img src="assets/selectbox_classificazione.jpg" class="my-4 img-fluid w-50" alt="Le curve riducibili che non vengono considerate nella classificazione topologica"></div>
+                            <p>Da questo menù a tendina è possibile selezionare la classificazione delle curve cubiche che ci interessa.</p>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">March 2013 - Present</span></div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Web Developer</h3>
-                            <div class="subheading mb-3">Intelitec Solutions</div>
-                            <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
+                            <h4>Maschera di selezione curva</h4>
+                            <div class="text-center"><img src="assets/selectbox_curva.jpg" class="my-4 img-fluid w-50" alt="Le curve riducibili che non vengono considerate nella classificazione topologica"></div>
+                            <p>Una volta spefificata la classificazione, da questo menù si può selezionare una curva rappresentativa della corrispondente classe di curve, da disegnare nei quadranti sottostanti.</p>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">December 2011 - March 2013</span></div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Junior Web Designer</h3>
-                            <div class="subheading mb-3">Shout! Media Productions</div>
-                            <p>Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.</p>
+                            <h4>Grafo del piano affine</h4>
+                            <div class="text-center"><img src="assets/quadrante_affine.jpg" class="my-4 img-fluid w-25" alt="Le curve riducibili che non vengono considerate nella classificazione topologica"></div>
+                            <p>La figura rappresenta la curva selezionata nell'area di piano affine tra il punto \((-10, -10)\) ed il punto \((10,10)\). Quest'area è stata scelta perché mostra i dettagli topologici caratteristici di tutte le curve.</p>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">July 2010 - December 2011</span></div>
                     </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Web Design Intern</h3>
-                            <div class="subheading mb-3">Shout! Media Productions</div>
-                            <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>
+                            <h4>Grafo della chiusura proiettiva</h4>
+                            <div class="text-center"><img src="assets/quadrante_proiettivo.jpg" class="my-4 img-fluid w-25" alt="Le curve riducibili che non vengono considerate nella classificazione topologica"></div>
+                            <p>La figura rappresenta la chiusura proiettiva della curva selezionata tramite il modello a disco. L'area rappresentata è quella tra il punto \((-1, -1)\) ed il punto \((1,1)\), ovvero l'area necessaria per contenere la circonferenza unitaria.</p>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">September 2008 - June 2010</span></div>
                     </div>
                 </div>
             </section>
             <hr class="m-0" />
-            <!-- Education-->
-            <section class="resume-section" id="education">
+            <!-- Applicazione-->
+            <section class="resume-section" id="applicazione">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Education</h2>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">University of Colorado Boulder</h3>
-                            <div class="subheading mb-3">Bachelor of Science</div>
-                            <div>Computer Science - Web Development Track</div>
-                            <p>GPA: 3.23</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">August 2006 - May 2010</span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">James Buchanan High School</h3>
-                            <div class="subheading mb-3">Technology Magnet Program</div>
-                            <p>GPA: 3.56</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">August 2002 - May 2006</span></div>
-                    </div>
-                </div>
-            </section>
-            <hr class="m-0" />
-            <!-- Skills-->
-            <section class="resume-section" id="applet">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">Applet</h2>
-                    <div class="subheading mb-3">Programming Languages & Tools</div>
+                    <h2 class="mb-5">Applicazione</h2>
                     <iframe src="https://federicogossi-gh-pages-test-app-xxtb71.streamlit.app/?embedded=true" frameborder="0" width="100%" height="600"></iframe>
-                    <div class="subheading mb-3">Workflow</div>
-                    <ul class="fa-ul mb-0">
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Mobile-First, Responsive Design
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Cross Browser Testing & Debugging
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Cross Functional Teams
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Agile Development & Scrum
-                        </li>
-                    </ul>
-                </div>
-            </section>
-            <hr class="m-0" />
-            <!-- Interests-->
-            <section class="resume-section" id="interests">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">Interests</h2>
-                    <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.</p>
-                    <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technology advancements in the front-end web development world.</p>
-                </div>
-            </section>
-            <hr class="m-0" />
-            <!-- Awards-->
-            <section class="resume-section" id="awards">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">Awards & Certifications</h2>
-                    <ul class="fa-ul mb-0">
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            Google Analytics Certified Developer
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            Mobile Web Specialist - Google Certification
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            1
-                            <sup>st</sup>
-                            Place - University of Colorado Boulder - Emerging Tech Competition 2009
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            1
-                            <sup>st</sup>
-                            Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            2
-                            <sup>nd</sup>
-                            Place - University of Colorado Boulder - Emerging Tech Competition 2008
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            1
-                            <sup>st</sup>
-                            Place - James Buchanan High School - Hackathon 2006
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                            3
-                            <sup>rd</sup>
-                            Place - James Buchanan High School - Hackathon 2005
-                        </li>
-                    </ul>
                 </div>
             </section>
         </div>

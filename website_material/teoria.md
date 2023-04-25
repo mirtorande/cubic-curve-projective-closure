@@ -51,7 +51,7 @@ $$
   \end{cases}
 $$
 
-Dove la formula per $x$ è stata ricavata dalle seguenti osservazioni: 
+Dove la formula per $x$ è stata ricavata dalle seguenti osservazioni:
 
 <img src="img/sezione_proiezione_semisfera.jpg" width="300" >
 
@@ -63,8 +63,40 @@ $$
 Ax^3 + Bx^2y + Cxy^2 + Dy^3 + Ex^2 + Fxy + Gy^2 + Hx + Iy + J = 0
 $$
 
+## Classificazione affine
+Sono presenti diverse possibili classificazioni di queste curve, ciascuna prende in considerazione gli invarianti rispetto a diverse trasformazioni. La classificazione che andremo a considerare è quella affine, ovvero quella che raggruppa le curve uguali a meno di una trasformazione affine nel piano.
+
+Secondo questa classificazione sono presenti le seguenti curve non riducibili:
+
+- $x^3 + xy^2 + x^2 + Hx + Iy + J = 0 \\ -∞ < H < ∞,\qquad 0 \leq I < ∞,\qquad -∞ < J < ∞$
+- $x^3 + xy^2 + y + Hx + J = 0 \\ -∞ < H < ∞,\qquad -∞ < J < ∞$
+- $x^3 + xy^2 + x + J = 0 \\ 0 \leq J < ∞$
+- $x^3 + xy^2 + 1 = 0$
+- $x^3 - xy^2 - x^2 + Hx + Iy + J = 0 \\ -∞ < H < ∞,\qquad -∞ < I \leq 0 ,\qquad -∞ < J < ∞$
+- $x^3 - xy^2 + 1 = 0$
+- $x^2y + y^2 - x + y + J = 0 \\ -∞ < J < ∞$
+- $x^2y + y^2 + y + J = 0 \\ -∞ < J < ∞$
+- $x^2y + y^2 - 1 = 0$
+- $x^2y + y^2= 0$
+- $x^2y - x + y + J = 0 \\ 0 \leq J < ∞$
+- $x^2y - x = 0$
+- $x^2y - x + 1 = 0$
+- $x^2y + y + 1 = 0$
+- $x^2y + 1= 0$
+- $x^3 - y^2 + x + J = 0\\ -∞ \lt J \lt ∞$
+- $x^3 - y^2 - x + J = 0\\ -∞ \lt J \lt ∞$
+- $x^3 - y^2 + 1 = 0$
+- $x^3 - y^2 = 0$
+- $x^3 - y = 0$
+- $x^3 - xy + 1 = 0$
+
+> Weinberg, David A. "The topological classification of cubic curves." The Rocky Mountain Journal of Mathematics (1988): 655-664.
+
+
 ## Classificazione topologica
-Sono presenti diverse possibili classificazioni di queste curve, ciascuna prende in considerazione gli invarianti rispetto a diverse trasformazioni. La classificazione che andremo a considerare è quella topologica, ovvero quella che raggruppa le curve che presentano un omeomforismo nel piano.
+Un'altra classificazione interessante è quella topologica, ovvero quella che raggruppa le curve che presentano un omeomforismo nel piano.
+
+In matematica, e più precisamente in topologia, un omeomorfismo è una particolare funzione fra spazi topologici che modella l'idea intuitiva di "deformazione senza strappi".
 
 Secondo questa classificazione sono presenti 21 curve non riducibili, di cui andremo a tracciare la chiusura proiettiva nell'applicativo.
 
