@@ -124,10 +124,9 @@ with st.empty():
     coefficents = parseEquation(classification_dict[classification][curve])
 
     points = generateFunctionPoints(coefficents, start=-affineLim, stop=affineLim, step = 0.05)
-    projected_points = projectPoints(generateFunctionOnDeprojectedPoints(coefficents, step = 0.0035))
+    projected_points = projectPoints(generateFunctionOnDeprojectedPoints(coefficents, step = 0.001))
 
-    if (0,0) in points:
-        projected_points = np.append(projected_points, [(0,0)], axis=0)
+    #if (0,0) in points: projected_points = np.append(projected_points, [(0,0)], axis=0)
 
     fig, ax = plt.subplots(1,2)
     ax[0].set_aspect('equal')
@@ -148,8 +147,8 @@ with st.empty():
 
         st.pyplot(fig)
 
-    for i in range(0, len(projected_points)+1, draw_batch_size*2):
-        proj_points = projected_points[i:i+draw_batch_size*2]
+    for i in range(0, len(projected_points)+1, draw_batch_size*4):
+        proj_points = projected_points[i:i+draw_batch_size*4]
 
         ax[1].scatter(x=proj_points[:,0], y=proj_points[:,1], color='b', s=lineSize)
 
