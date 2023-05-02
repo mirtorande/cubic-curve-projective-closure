@@ -115,18 +115,17 @@ classification = st.selectbox(
 curve = st.selectbox(
     'Curva',classification_dict[classification].keys()
 )
+
+affineLim = st.slider('Area di piano affine rappresentata', 1, 20, 10)
+
 with st.empty():
     lineSize = 0.25
     draw_batch_size = 200
-    affineLim = 10
-
 
     coefficents = parseEquation(classification_dict[classification][curve])
 
     points = generateFunctionPoints(coefficents, start=-affineLim, stop=affineLim, step = 0.05)
     projected_points = projectPoints(generateFunctionOnDeprojectedPoints(coefficents, step = 0.001))
-
-    #if (0,0) in points: projected_points = np.append(projected_points, [(0,0)], axis=0)
 
     fig, ax = plt.subplots(1,2)
     ax[0].set_aspect('equal')
