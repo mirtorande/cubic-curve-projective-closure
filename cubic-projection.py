@@ -124,7 +124,7 @@ with st.empty():
 
     coefficents = parseEquation(classification_dict[classification][curve])
 
-    points = generateFunctionPoints(coefficents, start=-affineLim, stop=affineLim, step = 0.05)
+    points = generateFunctionPoints(coefficents, start=-affineLim, stop=affineLim, step = 0.005*affineLim)
     projected_points = projectPoints(generateFunctionOnDeprojectedPoints(coefficents, step = 0.001))
 
     fig, ax = plt.subplots(1,2)
