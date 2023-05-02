@@ -116,7 +116,7 @@ curve = st.selectbox(
     'Curva',classification_dict[classification].keys()
 )
 
-affineLim = st.slider('Area di piano affine rappresentata', 1, 20, 10)
+affineLim = st.slider('Limite destro del grafico', 1, 20, 10)
 
 with st.empty():
     lineSize = 0.25
